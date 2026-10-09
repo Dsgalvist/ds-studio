@@ -24,3 +24,52 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+::selection {
+  background: #c2cce0;
+  color: #050608;
+}
+
+
+@keyframes ds-liquid-drift {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+
+  50% {
+    transform: translate3d(12px, -14px, 0) rotate(1deg);
+  }
+}
+
+@keyframes ds-liquid-drift-reverse {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(-10px, 12px, 0);
+  }
+}
+
+.ds-liquid-float {
+  transform-origin: 75% 30%;
+  animation: ds-liquid-drift 11s ease-in-out infinite;
+}
+
+.ds-liquid-float-reverse {
+  transform-origin: 55% 85%;
+  animation: ds-liquid-drift-reverse 14s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ds-liquid-float,
+  .ds-liquid-float-reverse {
+    animation: none;
+  }
+}
