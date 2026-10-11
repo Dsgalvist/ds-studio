@@ -18,12 +18,21 @@ export default function HeroContent({
   content,
 }: Props) {
   return (
-    <div className="relative z-10 flex min-h-[100svh] flex-col justify-start px-6 pb-8 pt-[140px] sm:px-10 lg:justify-center lg:px-14 lg:pb-20 lg:pt-28">
+    <div
+      className="
+        relative z-10 flex min-h-[100svh]
+        flex-col justify-start
+        px-6 pb-8 pt-[140px]
+        sm:px-10
+        lg:justify-center lg:px-14
+        lg:pb-20 lg:pt-28
+      "
+    >
       <div className="w-full max-w-[520px] xl:max-w-[570px]">
         {/* INTRO */}
         <p
           className="
-            mb-5 max-w-[330px]
+            mb-4 max-w-[330px]
             text-[9px] font-medium uppercase
             leading-[1.7] tracking-[0.22em]
             text-white/75
@@ -48,7 +57,12 @@ export default function HeroContent({
             {content.titleFirst}
           </span>
 
-          <span className="block font-serif font-normal italic text-[#C2CCE0]">
+          <span
+            className="
+              block font-serif font-normal italic
+              text-[#C2CCE0]
+            "
+          >
             {content.titleSecond}
           </span>
         </h1>
@@ -56,7 +70,7 @@ export default function HeroContent({
         {/* DESCRIPTION */}
         <p
           className="
-            mt-6 max-w-[340px]
+            mt-5 max-w-[340px]
             text-[13px] leading-[1.7]
             text-white/85
             sm:mt-8 sm:max-w-none sm:text-base
@@ -71,11 +85,12 @@ export default function HeroContent({
         {/* ACTIONS */}
         <div
           className="
-            mt-7 flex flex-wrap
+            mt-4 flex flex-wrap
             items-center gap-x-5 gap-y-4
             sm:mt-10 sm:gap-7
           "
         >
+          {/* EXPLORE PROJECTS */}
           <a
             href={`/${locale}#work`}
             className="
@@ -102,6 +117,7 @@ export default function HeroContent({
             {content.explore}
           </a>
 
+          {/* START PROJECT */}
           <a
             href={`/${locale}#contact`}
             className="
