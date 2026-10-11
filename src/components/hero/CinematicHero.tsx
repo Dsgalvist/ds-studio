@@ -1,3 +1,4 @@
+
 import HeroCursor from "./HeroCursor";
 import HeroPortraits from "./HeroPortraits";
 import HeroContent from "./HeroContent";
@@ -31,7 +32,10 @@ export default function CinematicHero({
 
       <HeroCursor />
 
-      <HeroContent locale={locale} content={content} />
+      {/* Contenido: subir 32px solo en mobile */}
+      <div className="relative z-20 -translate-y-8 md:translate-y-0">
+        <HeroContent locale={locale} content={content} />
+      </div>
 
       <div className="hidden lg:block">
         <HeroSideLabels locale={locale} />
