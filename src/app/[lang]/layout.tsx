@@ -1,8 +1,6 @@
 
-import type { ReactNode } from "react";
+import { Suspense, type ReactNode } from "react";
 import { notFound } from "next/navigation";
-
-type Language = "es" | "en";
 
 type Props = {
   children: ReactNode;
@@ -12,13 +10,10 @@ type Props = {
 };
 
 export function generateStaticParams() {
-  return [
-    { lang: "es" },
-    { lang: "en" },
-  ];
+  return [{ lang: "es" }, { lang: "en" }];
 }
 
-export default async function LanguageLayout({
+async function LanguageContent({
   children,
   params,
 }: Props) {
@@ -29,4 +24,17 @@ export default async function LanguageLayout({
   }
 
   return <>{children}</>;
+}
+
+export default function LanguageLayout({
+  children,
+  params,
+}: Props) {
+  return (
+    <Suspense fallback={null}>
+      <LanguageContent params={params}>
+        {children}
+      </LanguageContent>
+    </Suspense>
+  );
 }
