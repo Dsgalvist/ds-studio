@@ -33,7 +33,7 @@ export default function CinematicHero({
       <HeroCursor />
 
       {/* Contenido: subir 32px solo en mobile */}
-      <div className="relative z-20 -translate-y-8 md:translate-y-0">
+      <div className="relative z-20 -translate-y-12 md:translate-y-0">
         <HeroContent locale={locale} content={content} />
       </div>
 
