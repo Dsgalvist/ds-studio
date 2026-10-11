@@ -1,16 +1,20 @@
 
 import { Suspense } from "react";
 import { notFound } from "next/navigation";
-
+import ContactSection from "@/components/contact/ContactSection";
 import Navbar from "@/components/navbar/Navbar";
 import CinematicHero from "@/components/hero/CinematicHero";
-
+import AboutSection from "@/components/about/AboutSection";
+import ServicesSection from "@/components/services/ServicesSection";
+import ProjectsSection from "@/components/projects/ProjectsSection";
 import { getDictionary } from "@/i18n/dictionaries";
 import {
   isLocale,
   locales,
   type Locale,
 } from "@/i18n/config";
+import ScrollToTop from "@/components/ui/ScrollToTop";
+import StudioAssistant from "@/components/ui/StudioAssistant";
 
 type Props = {
   params: Promise<{ lang: string }>;
@@ -33,66 +37,40 @@ async function LocalizedHome({ params }: Props) {
 
   return (
     <>
-      {/* Navbar cinematográfico */}
+      {/* NAVBAR */}
       <Navbar
         locale={lang}
         content={dictionary.nav}
       />
 
       <main>
-        {/* Hero principal */}
+        {/* 01 — HERO */}
         <CinematicHero
           locale={lang}
           content={dictionary.hero}
         />
 
-        {/* Proyectos */}
-        <section
-          id="work"
-          className="min-h-screen scroll-mt-20 bg-[#050608] px-6 py-24 text-white"
-        >
-          <div className="mx-auto max-w-[1440px]">
-            <h2 className="text-4xl font-semibold tracking-tight md:text-6xl">
-              {dictionary.sections.work}
-            </h2>
-          </div>
-        </section>
+        {/* 02 — ABOUT */}
+        <AboutSection
+          locale={lang}
+          content={dictionary.about}
+        />
 
-        {/* Servicios */}
-        <section
-          id="services"
-          className="min-h-[60vh] scroll-mt-20 bg-[#080A0E] px-6 py-24 text-white"
-        >
-          <div className="mx-auto max-w-[1440px]">
-            <h2 className="text-4xl font-semibold tracking-tight md:text-6xl">
-              {dictionary.nav.services}
-            </h2>
-          </div>
-        </section>
+        {/* 03 — SERVICES */}
+        <ServicesSection
+          locale={lang}
+          content={dictionary.services}
+        />
 
-        {/* Nosotros */}
-        <section
-          id="about"
-          className="min-h-[60vh] scroll-mt-20 bg-[#050608] px-6 py-24 text-white"
-        >
-          <div className="mx-auto max-w-[1440px]">
-            <h2 className="text-4xl font-semibold tracking-tight md:text-6xl">
-              {dictionary.nav.about}
-            </h2>
-          </div>
-        </section>
+        {/* 04 — PROJECTS */}
+        <ProjectsSection locale={lang} />
 
-        {/* Contacto */}
-        <section
-          id="contact"
-          className="min-h-[60vh] scroll-mt-20 bg-[#080A0E] px-6 py-24 text-white"
-        >
-          <div className="mx-auto max-w-[1440px]">
-            <h2 className="text-4xl font-semibold tracking-tight md:text-6xl">
-              {dictionary.sections.contact}
-            </h2>
-          </div>
-        </section>
+        {/* 05 — CONTACT */}
+        <ContactSection locale={lang} />
+
+        <ScrollToTop />
+
+        <StudioAssistant locale={lang} />
       </main>
     </>
   );

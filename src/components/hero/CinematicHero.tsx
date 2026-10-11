@@ -25,21 +25,18 @@ export default function CinematicHero({
       id="home"
       className="relative isolate min-h-[100svh] overflow-hidden bg-[#050608]"
     >
-      {/* Fotografía original */}
       <HeroPortraits />
 
-      {/* Efectos cromados */}
       <HeroLiquid />
 
       <HeroCursor />
-      
-      {/* Contenido principal */}
+
       <HeroContent locale={locale} content={content} />
 
-      {/* Etiquetas editoriales */}
-      <HeroSideLabels locale={locale} />
+      <div className="hidden lg:block">
+        <HeroSideLabels locale={locale} />
+      </div>
 
-      {/* Indicador de scroll */}
       <div className="pointer-events-none absolute bottom-[7%] right-[5%] z-20 hidden flex-col items-center gap-5 xl:flex">
         <span className="text-[9px] font-medium uppercase tracking-[0.35em] text-white/70">
           {content.scroll}

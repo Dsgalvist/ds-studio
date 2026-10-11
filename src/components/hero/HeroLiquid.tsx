@@ -3,56 +3,99 @@
 
 import { Suspense, useEffect, useState } from "react";
 import { Canvas } from "@react-three/fiber";
+
 import LiquidScene from "./liquid/LiquidScene";
 
+type ViewportSettings = {
+  mobile: boolean;
+  reducedMotion: boolean;
+};
+
 export default function HeroLiquid() {
-  const [enabled, setEnabled] = useState(false);
+  const [viewport, setViewport] =
+    useState<ViewportSettings | null>(null);
 
   useEffect(() => {
-    const reducedMotion = window.matchMedia(
+    const motionQuery = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     );
 
-    const update = () => {
-      setEnabled(
-        !reducedMotion.matches &&
-          window.innerWidth >= 1024
-      );
+    const mobileQuery = window.matchMedia(
+      "(max-width: 1023px)"
+    );
+
+    const updateViewport = () => {
+      setViewport({
+        mobile: mobileQuery.matches,
+        reducedMotion: motionQuery.matches,
+      });
     };
 
-    update();
+    // Detectar configuración inicial
+    updateViewport();
 
-    reducedMotion.addEventListener("change", update);
-    window.addEventListener("resize", update);
+    // Detectar cambios de dispositivo o preferencias
+    motionQuery.addEventListener(
+      "change",
+      updateViewport
+    );
+
+    mobileQuery.addEventListener(
+      "change",
+      updateViewport
+    );
 
     return () => {
-      reducedMotion.removeEventListener("change", update);
-      window.removeEventListener("resize", update);
+      motionQuery.removeEventListener(
+        "change",
+        updateViewport
+      );
+
+      mobileQuery.removeEventListener(
+        "change",
+        updateViewport
+      );
     };
   }, []);
 
-  if (!enabled) return null;
+  // Evitar renderizar WebGL antes de detectar
+  // el dispositivo o si se prefiere reducir movimiento.
+  if (!viewport || viewport.reducedMotion) {
+    return null;
+  }
 
   return (
     <div
       aria-hidden="true"
-      className="pointer-events-none absolute inset-0 z-[5] overflow-hidden"
+      className="
+        pointer-events-none
+        absolute inset-0
+        z-[5]
+        overflow-hidden
+      "
     >
       <Canvas
-        dpr={[1, 1.5]}
+        key={viewport.mobile ? "mobile" : "desktop"}
+        dpr={
+          viewport.mobile
+            ? [1, 1]
+            : [1, 1.5]
+        }
+        frameloop="always"
         gl={{
           alpha: true,
-          antialias: true,
+          antialias: !viewport.mobile,
           powerPreference: "high-performance",
         }}
         style={{
           width: "100%",
           height: "100%",
           background: "transparent",
+          pointerEvents: "none",
         }}
       >
         <Suspense fallback={null}>
-          <LiquidScene />
+          <LiquidScene mobile={viewport.mobile} />
         </Suspense>
       </Canvas>
     </div>
