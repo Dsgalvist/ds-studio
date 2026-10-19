@@ -3,7 +3,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import type { Locale } from "@/i18n/config";
+import type { Locale } from "@/shared/i18n/config";
 
 type Props = {
   locale: Locale;

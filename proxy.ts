@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { defaultLocale, isLocale, type Locale } from "./src/i18n/config";
+import { defaultLocale, isLocale, type Locale } from "./src/shared/i18n/config";
 
 const COOKIE_NAME = "ds-locale";
 

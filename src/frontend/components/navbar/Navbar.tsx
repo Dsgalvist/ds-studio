@@ -14,7 +14,7 @@ import {
 import LanguageSwitcher from "./LanguageSwitcher";
 import WhatsAppIcon from "./WhatsAppIcon";
 
-import type { Locale } from "@/i18n/config";
+import type { Locale } from "@/shared/i18n/config";
 
 type NavContent = {
   work: string;

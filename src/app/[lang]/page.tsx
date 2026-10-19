@@ -1,20 +1,20 @@
 
 import { Suspense } from "react";
 import { notFound } from "next/navigation";
-import ContactSection from "@/components/contact/ContactSection";
-import Navbar from "@/components/navbar/Navbar";
-import CinematicHero from "@/components/hero/CinematicHero";
-import AboutSection from "@/components/about/AboutSection";
-import ServicesSection from "@/components/services/ServicesSection";
-import ProjectsSection from "@/components/projects/ProjectsSection";
-import { getDictionary } from "@/i18n/dictionaries";
+import ContactSection from "@/frontend/components/contact/ContactSection";
+import Navbar from "@/frontend/components/navbar/Navbar";
+import CinematicHero from "@/frontend/components/hero/CinematicHero";
+import AboutSection from "@/frontend/components/about/AboutSection";
+import ServicesSection from "@/frontend/components/services/ServicesSection";
+import ProjectsSection from "@/frontend/components/projects/ProjectsSection";
+import { getDictionary } from "@/shared/i18n/dictionaries";
 import {
   isLocale,
   locales,
   type Locale,
-} from "@/i18n/config";
-import ScrollToTop from "@/components/ui/ScrollToTop";
-import StudioAssistant from "@/components/ui/StudioAssistant";
+} from "@/shared/i18n/config";
+import ScrollToTop from "@/frontend/components/ui/ScrollToTop";
+import StudioAssistant from "@/frontend/components/ui/StudioAssistant";
 
 type Props = {
   params: Promise<{ lang: string }>;

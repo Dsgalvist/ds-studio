@@ -1,8 +1,8 @@
 
 import { ArrowUpRight } from "lucide-react";
 
-import type { Locale } from "@/i18n/config";
-import type en from "@/i18n/en";
+import type { Locale } from "@/shared/i18n/config";
+import type en from "@/shared/i18n/en";
 
 type HeroText = {
   [K in keyof (typeof en)["hero"]]: string;

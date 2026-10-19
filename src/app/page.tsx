@@ -2,7 +2,7 @@
 import { Suspense, type ReactNode } from "react";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
-import { locales, type Locale } from "@/i18n/config";
+import { locales, type Locale } from "@/shared/i18n/config";
 
 function detectLocale(acceptLanguage: string): Locale {
   const preferredLanguages = acceptLanguage

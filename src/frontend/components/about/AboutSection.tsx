@@ -8,7 +8,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import AboutProfile from "./AboutProfile";
 
-import type { Locale } from "@/i18n/config";
+import type { Locale } from "@/shared/i18n/config";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 

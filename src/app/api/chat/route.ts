@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { studioContext } from "@/data/studioContext";
+import { studioContext } from "@/shared/data/studioContext";
 
 type ChatMessage = {
   role: "user" | "assistant";
